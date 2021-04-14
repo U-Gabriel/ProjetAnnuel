@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/FairRepackWeb.iml" filepath="$PROJECT_DIR$/.idea/FairRepackWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/FairRepackC.iml" filepath="$PROJECT_DIR$/.idea/FairRepackC.iml" />
     </modules>
   </component>
 </project>
