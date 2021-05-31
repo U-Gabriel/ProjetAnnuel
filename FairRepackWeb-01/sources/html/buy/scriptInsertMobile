@@ -1,0 +1,42 @@
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy S20 ", 250);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy Z", 300);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy Note20", 700);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Note10", 500);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Note10+", 550);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy Note 9",600 );
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy S9", 1100);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy A8", 230);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy Note 8",450);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy S8", 600);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy J5",150);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy A3 ", 150);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy A5 ",180);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy Note 7",300);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy J7",200);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy J3",120);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy S7",550);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy S6",450);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy A7",400);
+INSERT INTO `model`(`marque`, `model`, `prix`) VALUES ("Sumsung","Samsung Galaxy Grand Prime",450);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
