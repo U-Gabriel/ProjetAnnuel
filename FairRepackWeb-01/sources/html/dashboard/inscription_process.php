@@ -1,4 +1,5 @@
 <?php session_start();
+
 require('../vendor/include/config.php');
 
 //**************************************************************************************************
@@ -13,7 +14,6 @@ require('../vendor/include/config.php');
     $cp = htmlspecialchars(trim($_POST['cp']));
     $civilite = htmlspecialchars(trim($_POST['civilite']));
 
-if (isset($_POST['Valider'])) {
 $code= "";
 for ($i=0; $i <5 ; $i++) { 
   $code .=mt_rand(1,9);
@@ -22,7 +22,6 @@ $CO=$_SESSION['code']=$code;
 $_SESSION['email']=$email;
 $message = 'Bonjour, votre code de confirmation est  : $CO'; 
 mail($email, 'Confirmation email', $message);
-
 
 //**************************************************************************************************
 //insertions des donnees a la bdd ******************************************************************
@@ -46,7 +45,7 @@ mail($email, 'Confirmation email', $message);
 //si l'inscription est reussie on passe a la page de connexion**************************************
 header('location: confirmation.php');
 exit;
-}
+
 
 ?>
 

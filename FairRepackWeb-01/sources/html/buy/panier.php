@@ -43,27 +43,43 @@ echo '<?xml version="1.0" encoding="utf-8"?>';
     <link rel="icon" href="../vendor/img/fRepackFav.png" />
     <meta name="description" content="Aider l'environnement tout en vous aidant.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Site meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Panier</h1>
+     </div>
+</section>
 <form method="post" action="panier.php">
-<table style="width: 1500px">
-    <tr>
-        <td colspan="5">Votre panier</td>
-    </tr>
-    <tr>
-        <td>Produit</td>
-        <td>Quantité</td>
-        <td>Prix Unitaire</td>
-        <td>Action</td>
-        <td>Photo</td>
-    </tr>
 
 
-    <?php
+
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Produit</th>
+                            <th scope="col">Disponibilité</th>
+                            <th scope="col" class="text-center">Quantité</th>
+                            <th scope="col" class="text-right">Prix</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <?php
 
 
-    if (creationPanier())
+     if (creationPanier())
     {
 
        $nbArticles=count($_SESSION['panier']['libelleProduit']);
@@ -72,59 +88,83 @@ echo '<?xml version="1.0" encoding="utf-8"?>';
        else
        {
           for ($i=0 ;$i < $nbArticles ; $i++)
-          {
-             echo "<tr>";
-             echo "<td>".htmlspecialchars($_SESSION['panier']['libelleProduit'][$i])."</ td>";
-             echo "<td><input type=\"text\" size=\"4\" name=\"q[]\" value=\"".htmlspecialchars($_SESSION['panier']['qteProduit'][$i])."\"/></td>";
-             echo "<td>".htmlspecialchars($_SESSION['panier']['prixProduit'][$i])."</td>";
-             echo "<td><a href=\"".htmlspecialchars("panier.php?action=suppression&l=".rawurlencode($_SESSION['panier']['libelleProduit'][$i]))."\">Supprimer</a></td>";
-             echo "<td><img style='height: 200px;width: 150px;' src='uploads_produit/" .$_SESSION['panier']['photoProduit'][$i] . "'></td>";
-             echo "</tr>";
-           $marques = array(
-              $i => $_SESSION['panier']['libelleProduit'], 
-           );
-            $prixs = array(
-              $i => $_SESSION['panier']['prixProduit'], 
-           ); 
-            $ids = array(
-              $i => $_SESSION['panier']['idProduit'], 
-           );
-          }
-
-          echo "<tr><td colspan=\"2\"> </td>";
-          echo "<td colspan=\"2\">";
-          echo "Total : ".MontantGlobal();
-          echo "</td></tr>";
-
-          echo "<tr><td colspan=\"4\">";
-          echo "<input type=\"submit\" value=\"Rafraichir\"/>";
-          echo "<input type=\"hidden\" name=\"action\" value=\"refresh\"/>";
-
-          echo "</td></tr>";
-       }
-    }
-    ?>
+          { ?>
+                        <tr>
+                            <td><img style='height: 100px;width: 100px;' src="uploads_produit/<?php echo $_SESSION['panier']['photoProduit'][$i]?>"></td>
+                            <td><?php echo $_SESSION['panier']['libelleProduit'][$i]; ?></td>
+                            <td>En stock</td>
+                            <td><input class="form-control" type="text" value="<?php echo $_SESSION['panier']['qteProduit'][$i] ?>" /></td>
+                            <td class="text-right"><?php echo $_SESSION['panier']['prixProduit'][$i]*$_SESSION['panier']['qteProduit'][$i]?></td>
+                            <?php echo "<td class='text-right'><button class='btn btn-sm btn-danger'><i class='fa fa-trash'><a href=\"".htmlspecialchars("panier.php?action=suppression&l=".rawurlencode($_SESSION['panier']['libelleProduit'][$i]))."\"></a></td>"; ?> 
+                           
+                        </tr>
+                       <?php 
+                         $marques = array(
+                            $i => $_SESSION['panier']['libelleProduit'], 
+                         );
+                          $prixs = array(
+                            $i => $_SESSION['panier']['prixProduit'], 
+                         ); 
+                          $ids = array(
+                            $i => $_SESSION['panier']['idProduit'], 
+                         );
 
 
-</table>
+                       }?>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Total</td>
+                            <td class="text-right"><?php echo MontantGlobal(); }}?></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Livraison</td>
+                            <td class="text-right">6,90 €</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>Total a payer</strong></td>
+                            <td class="text-right"><strong><?php echo MontantGlobal()+6.90;?></strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+              
+            </div>
+        </div>
+        
+    </div>
+</div>
+ 
 </form>
-<button><a href="produitListe.php">Precedent</a></button>
-
-<!--<button><a href="vent.php?marque=<?php //echo $l ?>">Passer la commande</a></button>-->
-
-<button onclick="vent()">Passer la commande</button>
-
-
-
-
- <div style="display: none;" id="vent">
+<div  class="container mb-4">
+            <div class="row">
+                <div class="col-sm-12  col-md-6">
+                    <button class="btn btn-block btn-light"><a href="produitListe.php">Continue l'achat</a></button>
+                </div> 
+                <div class="col-sm-12 col-md-6 text-right">
+                    <button class="btn btn-block btn-light"><a href="../index/index.php">Quitter</a></button>
+                </div>
+            </div>
+</div>
+              
+ 
+<div class="container mb-4" id="vent">
  <h1>Sélectionnez une adresse de livraison</h1><br>
  <form method="post">
- <input type="text" name="adresse" placeholder="Adresse"><br>
- <input type="text" name="ville" placeholder="Ville"><br>
- <input type="text" name="cp" placeholder="code postal"><br>
- <br><input type="text" name="promo" placeholder="Entrez un code promotionnel Fairrepack"><br> 
- <input type="submit" name="submit" value ="Valider">
+ <input class="form-control" type="text" name="adresse" placeholder="Adresse"><br>
+ <input class="form-control" type="text" name="ville" placeholder="Ville"><br>
+ <input class="form-control" type="text" name="cp" placeholder="code postal"><br>
+ <br><input class="form-control" type="text" name="promo" placeholder="Entrez un code promotionnel Fairrepack"><br> 
+ <input type="submit" name="submit" class="btn btn-lg btn-block btn-success text-uppercase"  value ="Valider">
  </form>
  <?php 
      if (isset($_POST["promo"])) {
@@ -147,7 +187,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>';
      $ville =$_POST["ville"];
      $cp=$_POST["cp"];
      }
-     $price_base= MontantGlobal()*100;
+     $price_base= (MontantGlobal()+6.90)*100;
      echo "<br>Prix de base : " . $price_base/100 . "€";
      if($pourcentage!=0 && $promo == $code){
      $price= MontantGlobal()*100*$pourcentage;
@@ -195,7 +235,6 @@ echo '<?xml version="1.0" encoding="utf-8"?>';
     <input type="hidden" name="Prix[]" value="<?php echo $Prix[$nbArticles][$i]?>">
     <?php } ?>
     </form>
-
  </div>
  <script type="text/javascript">
    function vent(){

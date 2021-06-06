@@ -76,8 +76,8 @@ $Cville_l = str_replace('##VILLE_L##', $ville_l, $Cville_l);
 $Ccp_l = str_replace('##CP_L##', $cp_l, $Ccp_l);
 
 
-$pdf->Image('suppImage/logo.png',10,10,-300);
-$pdf->Image('suppImage/logo-ESGI.jpg',160,10,-300);
+$pdf->Image('../vendor/img/fRepackLogo.png',10,10,-300);
+$pdf->Image('../vendor/img/logo_ESGI.png',160,10,-300);
 $pdf->Ln(20);
 $pdf->SetTextColor(255 , 0, 0);
 $pdf->SetFontSize(13); 

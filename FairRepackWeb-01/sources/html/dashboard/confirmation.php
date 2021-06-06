@@ -25,12 +25,12 @@ session_start();
    </section>
 
 <?php
-
+echo $_SESSION['code'];
 if (isset($_POST['Valider']) ){
  
   
   if ($_POST['confirmation']==$_SESSION['code']) {
- 
+
     $q = 'UPDATE client SET confirmation = 1 WHERE email=?';
     $req = $bdd->prepare($q);
         $req->execute(array($_SESSION['email']));
